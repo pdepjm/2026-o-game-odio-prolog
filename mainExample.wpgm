@@ -1,11 +1,23 @@
 import wollok.game.*
 
-import example.pepita
+import example.*
 
 program PepitaGame {
-	game.title("Pepita")
-	game.height(10)
-	game.width(10)
+	game.title("GloboMania")
+	game.height(13)
+	game.width(11)
+	game.cellSize(150)
+	//game.boardGround("cielo3.png") //no me carga la imagen. solo carga si pongo la carpeta utils afuera del repo
+
+
+	game.addVisual(globo)
+
+	keyboard.left().whilePressedDo({ globo.direccionActual("izquierda") },50)
+    keyboard.right().whilePressedDo({ globo.direccionActual("derecha") },50)
+
+
+    game.onTick(150, "movimientoGlobo", { globo.moverse() })
 
 	game.start()
 }
+
