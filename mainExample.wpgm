@@ -2,22 +2,39 @@ import wollok.game.*
 
 import example.*
 
-program PepitaGame {
-	game.title("GloboMania")
-	game.height(13)
-	game.width(11)
-	game.cellSize(150)
-	//game.boardGround("cielo3.png") //no me carga la imagen. solo carga si pongo la carpeta utils afuera del repo
+object configuracionJuego {                        
+        method iniciar() {                             
+            game.clear()
 
+            globo.reiniciar()
+            game.addVisual(globo)
 
-	game.addVisual(globo)
+            keyboard.left().whilePressedDo({ globo.direccionActual("izquierda") }, 50)
+            keyboard.right().whilePressedDo({ globo.direccionActual("derecha") }, 50)
+            
+            game.onTick(350, "movimientoGlobo", {
+                globo.moverseHorizontal()
+                globo.avanzarAltura()
+                generadorDeNubes.moverNubes()
+            })
+            
+            game.onCollideDo(globo, { elemento => elemento.interaccion() })
+            
+            generadorDeNubes.reiniciar()
+            game.onTick(200, "generadorNubes", { generadorDeNubes.generar() })
+                                                       
+            keyboard.r().onPressDo({ self.iniciar() })
+        }                                              
+    }
 
-	keyboard.left().whilePressedDo({ globo.direccionActual("izquierda") },50)
-    keyboard.right().whilePressedDo({ globo.direccionActual("derecha") },50)
+program PepitaGame {                               
+        game.title("GloboMania")
+        game.height(8)
+        game.width(7)
+        game.cellSize(250)
+        game.boardGround("2026-o-game-odio-prolog/assets/cielo3.png")
 
-
-    game.onTick(150, "movimientoGlobo", { globo.moverse() })
-
-	game.start()
-}
+        configuracionJuego.iniciar()
+        game.start()
+    }    
 
