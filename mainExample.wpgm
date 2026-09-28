@@ -1,6 +1,7 @@
 import wollok.game.*
 
-import example.*
+import nubes.*
+import globo.*
 
 object configuracionJuego {                        
         method iniciar() {                             
@@ -22,7 +23,6 @@ object configuracionJuego {
             
             generadorDeNubes.reiniciar()
             game.onTick(200, "generadorNubes", { generadorDeNubes.generar() })
-                                                       
             keyboard.r().onPressDo({ self.iniciar() })
         }                                              
     }
