@@ -7,6 +7,7 @@ object globo {
     var property direccionActual = "ninguna"
     var property position = game.at(5, 2)
     var property altura = 2
+    var property puntaje = 0
     var vivo = true
 
     method morir() {
@@ -39,11 +40,13 @@ object globo {
 
     method avanzarAltura() {
         altura = altura + 1
+        puntaje = puntaje + 1
     }
 
     method reiniciar() {
         position = game.at(game.width().div(2), 2)
         altura = 2
+        puntaje = 0
         direccionActual = "ninguna"
         vivo = true
     }

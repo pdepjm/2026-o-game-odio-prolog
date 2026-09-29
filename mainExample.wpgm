@@ -3,13 +3,19 @@ import wollok.game.*
 import nubes.*
 import globo.*
 
+object marcadorPuntaje{
+    method position() = game.at(0, 7)
+    method text() = "Puntaje: " + globo.puntaje()
+}
+
 object configuracionJuego {                        
         method iniciar() {                             
             game.clear()
 
             globo.reiniciar()
             game.addVisual(globo)
-
+            game.addVisual(marcadorPuntaje)
+            
             keyboard.left().whilePressedDo({ globo.direccionActual("izquierda") }, 50)
             keyboard.right().whilePressedDo({ globo.direccionActual("derecha") }, 50)
             
