@@ -5,7 +5,7 @@ class Nube {
     var property position
     var property opacidad = (1..4).anyOne() == 1
 
-    method image() = if(opacidad) "nube_transparente.png" else "nube.png"
+    method image() = if(opacidad) "2026-o-game-odio-prolog/assets/nube_transparente.png" else "2026-o-game-odio-prolog/assets/nube.png"
     
     method interaccion() {
         if (!opacidad) {

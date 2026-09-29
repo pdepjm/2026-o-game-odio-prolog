@@ -2,6 +2,7 @@ import wollok.game.*
 
 import nubes.*
 import globo.*
+import consumibles.*
 
 object marcadorPuntaje{
     method position() = game.at(0, 7)
@@ -22,13 +23,19 @@ object configuracionJuego {
             game.onTick(350, "movimientoGlobo", {
                 globo.moverseHorizontal()
                 globo.avanzarAltura()
-                generadorDeNubes.moverNubes()
             })
+
+            game.onTick(350, "movimientoNubes", {
+                generadorDeNubes.moverNubes() 
+                generadorDeConsumibles.moverConsumibles()
+                })
             
             game.onCollideDo(globo, { elemento => elemento.interaccion() })
             
             generadorDeNubes.reiniciar()
+            generadorDeConsumibles.reiniciar()
             game.onTick(200, "generadorNubes", { generadorDeNubes.generar() })
+            game.onTick(1000, "generadorConsumibles", {generadorDeConsumibles.generar()})
             keyboard.r().onPressDo({ self.iniciar() })
         }                                              
     }
@@ -38,7 +45,7 @@ program PepitaGame {
         game.height(8)
         game.width(7)
         game.cellSize(250)
-        game.boardGround("cielo3.png")
+        game.boardGround("2026-o-game-odio-prolog/assets/cielo3.png")
 
         configuracionJuego.iniciar()
         game.start()

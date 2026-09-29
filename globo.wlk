@@ -3,12 +3,14 @@ import wollok.game.*
 import nubes.*
 
 
+
 object globo {
     var property direccionActual = "ninguna"
     var property position = game.at(5, 2)
     var property altura = 2
     var property puntaje = 0
     var vivo = true
+    var estaRealentizado = false 
 
     method morir() {
         if (vivo) {
@@ -22,7 +24,7 @@ object globo {
         }
     }
 
-    method image() = "personajeGlobo.png"
+    method image() = "2026-o-game-odio-prolog/assets/personajeGlobo.png"
 
     method moverseHorizontal() {
         var nuevaPosicion = position
@@ -50,4 +52,26 @@ object globo {
         direccionActual = "ninguna"
         vivo = true
     }
+
+    method realentizar() {
+    estaRealentizado = true
+    
+    // Cambiamos el tick a velocidad lenta (ej: 1500 ms)
+    game.removeTickEvent("movimientoGlobo")
+    game.onTick(1500, "movimientoGlobo", {
+        self.moverseHorizontal()
+        self.avanzarAltura()
+    })
+
+    // A los 10 segundos vuelve a la normalidad
+    game.schedule(10000, {
+        estaRealentizado = false
+        game.removeTickEvent("movimientoGlobo")
+        // Volvemos al tick normal (350 ms)
+        game.onTick(350, "movimientoGlobo", {
+            self.moverseHorizontal()
+            self.avanzarAltura()
+        })
+    })
+}
 }
