@@ -38,7 +38,7 @@ program PepitaGame {
         game.height(8)
         game.width(7)
         game.cellSize(250)
-        game.boardGround("2026-o-game-odio-prolog/assets/cielo3.png")
+        game.boardGround("cielo3.png")
 
         configuracionJuego.iniciar()
         game.start()

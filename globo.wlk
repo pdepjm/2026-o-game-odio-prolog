@@ -22,7 +22,7 @@ object globo {
         }
     }
 
-    method image() = "2026-o-game-odio-prolog/assets/personajeGlobo.png"
+    method image() = "personajeGlobo.png"
 
     method moverseHorizontal() {
         var nuevaPosicion = position
