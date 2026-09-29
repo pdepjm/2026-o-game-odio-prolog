@@ -4,7 +4,7 @@ import wollok.game.*
 class SanLorenzo{
     var property position
 
-    method image() = "2026-o-game-odio-prolog/assets/caslaCar.png"
+    method image() = "caslaCar.png"
 
     //quiero que el "SanLorenzo" choque con el personaje y lo realentize
 
