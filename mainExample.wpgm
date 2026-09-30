@@ -61,6 +61,8 @@ program PepitaGame {
         game.cellSize(250)
         game.boardGround("2026-o-game-odio-prolog/assets/cielo3.png")
 
+        game.sound("2026-o-game-odio-prolog/assets/davanti_morocha.mp3").play()
+
         configuracionJuego.iniciar()
         game.start()
     }    

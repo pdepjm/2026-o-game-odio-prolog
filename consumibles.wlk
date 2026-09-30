@@ -10,6 +10,7 @@ class SanLorenzo{
 
     method interaccion(){
         globo.realentizar()
+        game.removeVisual(self)
         game.sound("2026-o-game-odio-prolog/assets/acabaDePerderSanlo.mp3").play()
         game.onTick(350, "imagenDeSanlo", {
             const opcion = [sanloDiminuto].anyOne()
@@ -25,8 +26,6 @@ object sanloDiminuto{
     var property position = game.at(3,5)
     method image() = "2026-o-game-odio-prolog/assets/memeSanlo.png"
 }
-
-
 
 object generadorDeConsumibles{
 
