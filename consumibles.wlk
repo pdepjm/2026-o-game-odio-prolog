@@ -4,14 +4,29 @@ import wollok.game.*
 class SanLorenzo{
     var property position
 
-    method image() = "caslaCar.png"
+    method image() = "2026-o-game-odio-prolog/assets/caslaCar.png"
 
     //quiero que el "SanLorenzo" choque con el personaje y lo realentize
 
     method interaccion(){
         globo.realentizar()
+        game.sound("2026-o-game-odio-prolog/assets/acabaDePerderSanlo.mp3").play()
+        game.onTick(350, "imagenDeSanlo", {
+            const opcion = [sanloDiminuto].anyOne()
+            game.addVisual(opcion)
+            game.schedule(250, {game.removeVisual(opcion)})
+        })
+
+        game.schedule(10000, {game.removeTickEvent("imagenDeSanlo")})
     }
 }
+
+object sanloDiminuto{
+    var property position = game.at(3,5)
+    method image() = "2026-o-game-odio-prolog/assets/memeSanlo.png"
+}
+
+
 
 object generadorDeConsumibles{
 
