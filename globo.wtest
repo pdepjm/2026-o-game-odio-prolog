@@ -1,0 +1,49 @@
+import globo.*
+
+describe "globo" {
+
+    method initialize() {
+        game.width(7)
+        game.height(8)
+    }
+
+    test "arranca en (5,2) con altura 2, puntaje 0 y sin dirección" {
+        assert.equals(5, globo.position().x())
+        assert.equals(2, globo.position().y())
+        assert.equals(2, globo.altura())
+        assert.equals(0, globo.puntaje())
+        assert.equals("ninguna", globo.direccionActual())
+    }
+
+    test "si la dirección es derecha, se mueve una columna a la derecha" {
+        globo.direccionActual("derecha")
+        globo.moverseHorizontal()
+        assert.equals(6, globo.position().x())
+    }
+
+    test "si la dirección es izquierda, se mueve una columna a la izquierda" {
+        globo.direccionActual("izquierda")
+        globo.moverseHorizontal()
+        assert.equals(4, globo.position().x())
+    }
+
+    test "sin dirección no se mueve" {
+        globo.moverseHorizontal()
+        assert.equals(5, globo.position().x())
+    }
+
+    test "no se sale del tablero por la derecha" {
+        globo.position(game.at(6, 2))
+        globo.direccionActual("derecha")
+        globo.moverseHorizontal()
+        assert.equals(6, globo.position().x())
+    }
+
+    test "no se sale del tablero por la izquierda" {
+        globo.position(game.at(0, 2))
+        globo.direccionActual("izquierda")
+        globo.moverseHorizontal()
+        assert.equals(0, globo.position().x())
+    }
+
+}
