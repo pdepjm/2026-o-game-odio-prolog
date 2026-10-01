@@ -5,7 +5,7 @@ class Nube {
     var property position
     var property opacidad = (1..4).anyOne() == 1
 
-    method image() = if(opacidad) "2026-o-game-odio-prolog/assets/nube_transparente.png" else "2026-o-game-odio-prolog/assets/nubeee.png"
+    method image() = if(opacidad) "nube_transparente.png" else "nubeee.png"
     
     method interaccion() {
         if (!opacidad) {
@@ -53,4 +53,6 @@ object generadorDeNubes {
         self.limpiarNubes()
         ultimaAltura = 3
     }
+    
+    
 }

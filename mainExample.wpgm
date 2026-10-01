@@ -11,7 +11,7 @@ class Digito {
     const indice   // 0 = unidades, 1 = decenas, 2 = centenas, 3 = miles
 
     method position() = posicion
-    method image() = "2026-o-game-odio-prolog/assets/" + self.valor().toString() + ".png"
+    method image() = "" + self.valor().toString() + ".png"
     method valor() = globo.puntaje().div([1, 10, 100, 1000].get(indice)) % 10
 }
 
@@ -51,6 +51,8 @@ object configuracionJuego {
             generadorDeConsumibles.reiniciar()
             game.onTick(200, "generadorNubes", { generadorDeNubes.generar() })
             game.onTick(1000, "generadorConsumibles", {generadorDeConsumibles.generar()})
+            //COMENTARIO PARA ARREGLAR: EL ITEM PUEDE APARECER EN EL MISMO LUGAR AL MISMO TIEMPO
+            //SETTEAR DIFERENTES POSICIONES PARA AMBOS GENERADORES
             keyboard.r().onPressDo({ self.iniciar() })
         }                                              
     }
@@ -60,11 +62,11 @@ program PepitaGame {
         game.height(8)
         game.width(7)
         game.cellSize(250)
-        game.boardGround("2026-o-game-odio-prolog/assets/cielo3.png")
+        game.boardGround("cielo3.png")
 
-        game.sound("2026-o-game-odio-prolog/assets/davanti_morocha.mp3").play()
+        game.sound("davanti_morocha.mp3").play()
 
         configuracionJuego.iniciar()
         game.start()
-    }    
+    }
 

@@ -1,5 +1,5 @@
 import wollok.game.*
-
+import consumibles.*
 import nubes.*
 
 
@@ -15,16 +15,21 @@ object globo {
     method morir() {
         if (vivo) {
             vivo = false
-            game.say(self, "pero la puta madre")
-            game.schedule(1500, {
-                game.removeTickEvent("movimientoGlobo")
-                game.removeTickEvent("generadorNubes")
+            generadorDeConsumibles.limpiarConsumibles()
+            generadorDeNubes.limpiarNubes()
+            game.removeTickEvent("movimientoGlobo")
+            game.removeTickEvent("generadorNubes")
+            game.removeTickEvent("generadorConsumibles")
+            game.schedule(350, {
+                game.say(self, "pero la puta madre")
+            }) 
+            game.schedule(2000, {
                 game.say(self, "Presiona R para reiniciar")
-            })
+            })  
         }
     }
 
-    method image() = "2026-o-game-odio-prolog/assets/personajeGlobo.png"
+    method image() = "personajeGlobo.png"
 
     method moverseHorizontal() {
         var nuevaPosicion = position
@@ -51,6 +56,8 @@ object globo {
         puntaje = 0
         direccionActual = "ninguna"
         vivo = true
+        generadorDeNubes.limpiarNubes()
+        generadorDeConsumibles.limpiarConsumibles()
     }
 
     method realentizar() {
