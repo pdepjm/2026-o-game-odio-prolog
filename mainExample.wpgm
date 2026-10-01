@@ -4,8 +4,9 @@ import nubes.*
 import globo.*
 import consumibles.*
 
-// Cada Digito muestra una cifra del puntaje con una imagen (0.png ... 9.png en assets)
+
 class Digito {
+    
     const posicion
     const indice   // 0 = unidades, 1 = decenas, 2 = centenas, 3 = miles
 
