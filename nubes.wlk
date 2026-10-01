@@ -17,6 +17,7 @@ class Nube {
 object generadorDeNubes {
     var ultimaAltura = 3
     const nubes = []
+    var acelerador = 1 
 
     method generar() {
         if (globo.altura() >= ultimaAltura - 10) {
@@ -33,13 +34,20 @@ object generadorDeNubes {
 
     method moverNubes() {
         nubes.forEach({ nube => 
-            nube.position(nube.position().down(1))
+            if(nube.position().y() != 3) nube.position(nube.position().down(acelerador))
+            else {nube.position(nube.position().down(1))} //esto es para que cuando acelere el globo tenga que pasar por la casilla del glob si o si
+            
         })
         const nubesViejas = nubes.filter({ nube => nube.position().y() < -2 })
         nubesViejas.forEach({ nube => 
             if (game.hasVisual(nube)) { game.removeVisual(nube) }
             nubes.remove(nube)
         })
+    }
+
+    method acelerar(){
+        acelerador = 2 
+        game.schedule(10000,{acelerador = 1})
     }
 
     method limpiarNubes() {

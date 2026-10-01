@@ -1,3 +1,4 @@
+import nubes.*
 import globo.*
 import wollok.game.*
 
@@ -9,7 +10,8 @@ class SanLorenzo{
     //quiero que el "SanLorenzo" choque con el personaje y lo realentize
 
     method interaccion(){
-        globo.realentizar()
+        // globo.realentizar()
+        generadorDeNubes.acelerar()
         game.removeVisual(self)
         game.sound("acabaDePerderSanlo.mp3").play()
         game.onTick(350, "imagenDeSanlo", {
@@ -17,7 +19,6 @@ class SanLorenzo{
             game.addVisual(opcion)
             game.schedule(250, {game.removeVisual(opcion)})
         })
-
         game.schedule(10000, {game.removeTickEvent("imagenDeSanlo")})
     }
 }

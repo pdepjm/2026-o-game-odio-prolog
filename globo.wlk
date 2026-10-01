@@ -10,7 +10,7 @@ object globo {
     var property altura = 2
     var property puntaje = 0
     var vivo = true
-    var estaRealentizado = false 
+    // var estaRealentizado = false 
 
     method morir() {
         if (vivo) {
@@ -60,25 +60,25 @@ object globo {
         generadorDeConsumibles.limpiarConsumibles()
     }
 
-    method realentizar() {
-    estaRealentizado = true
+//     method realentizar() {
+//     estaRealentizado = true
     
-    // Cambiamos el tick a velocidad lenta (ej: 1500 ms)
-    game.removeTickEvent("movimientoGlobo")
-    game.onTick(1500, "movimientoGlobo", {
-        self.moverseHorizontal()
-        self.avanzarAltura()
-    })
+//     // Cambiamos el tick a velocidad lenta (ej: 1500 ms)
+//     game.removeTickEvent("movimientoGlobo")
+//     game.onTick(1500, "movimientoGlobo", {
+//         self.moverseHorizontal()
+//         self.avanzarAltura()
+//     })
 
-    // A los 10 segundos vuelve a la normalidad
-    game.schedule(10000, {
-        estaRealentizado = false
-        game.removeTickEvent("movimientoGlobo")
-        // Volvemos al tick normal (350 ms)
-        game.onTick(350, "movimientoGlobo", {
-            self.moverseHorizontal()
-            self.avanzarAltura()
-        })
-    })
-}
+//     // A los 10 segundos vuelve a la normalidad
+//     game.schedule(10000, {
+//         estaRealentizado = false
+//         game.removeTickEvent("movimientoGlobo")
+//         // Volvemos al tick normal (350 ms)
+//         game.onTick(350, "movimientoGlobo", {
+//             self.moverseHorizontal()
+//             self.avanzarAltura()
+//         })
+//     })
+// }
 }
