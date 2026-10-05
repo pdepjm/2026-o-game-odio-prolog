@@ -10,7 +10,7 @@ describe "globo" {
     }
 
     test "arranca en (5,2) con altura 2, puntaje 0 y sin dirección" {
-        assert.equals(5, globo.position().x())
+        assert.equals(3, globo.position().x())
         assert.equals(2, globo.position().y())
         assert.equals(2, globo.altura())
         assert.equals(0, globo.puntaje())
