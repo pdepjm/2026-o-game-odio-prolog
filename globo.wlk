@@ -20,30 +20,32 @@ object globo {
             game.removeTickEvent("movimientoGlobo")
             game.removeTickEvent("generadorNubes")
             game.removeTickEvent("generadorConsumibles")
-            game.schedule(350, {
-                game.say(self, "pero la puta madre")
-            }) 
-            game.schedule(2000, {
-                game.say(self, "Presiona R para reiniciar")
-            })  
+            game.removeVisual(self)
+            game.addVisual(gameOver)
         }
     }
 
     method image() = "personajeGlobo.png"
 
-    method moverseHorizontal() {
-        var nuevaPosicion = position
+    // method moverseHorizontal() {
+    //     var nuevaPosicion = position
 
-        if (direccionActual == "derecha" && position.x() < game.width() - 1) {
-            nuevaPosicion = nuevaPosicion.right(1)
-        }
-        else if (direccionActual == "izquierda" && position.x() > 0) {
-            nuevaPosicion = nuevaPosicion.left(1)
-        }
+    //     if (direccionActual == "derecha" && position.x() < game.width() - 1) {
+    //         nuevaPosicion = nuevaPosicion.right(1)
+    //     }
+    //     else if (direccionActual == "izquierda" && position.x() > 0) {
+    //         nuevaPosicion = nuevaPosicion.left(1)
+    //     }
 
-        self.position(nuevaPosicion)
-        direccionActual = "ninguna"
-    } 
+    //     self.position(nuevaPosicion)
+    //     direccionActual = "ninguna"
+    // } 
+
+    method mover(direccion) {
+        if (direccion.puedeMoverse(self)) {
+            position = direccion.siguiente(position)
+        }
+    }
 
     method avanzarAltura() {
         altura = altura + 1
@@ -81,4 +83,22 @@ object globo {
 //         })
 //     })
 // }
+
+}
+
+object izquierda {
+    method siguiente(pos) = pos.left(1)
+    
+    method puedeMoverse(personaje) = personaje.position().x() > 0
+}
+
+object derecha {
+    method siguiente(pos) = pos.right(1)
+    
+    method puedeMoverse(personaje) = personaje.position().x() < game.width() - 1
+}
+
+object gameOver{
+    var property position = game.at(2, 2)
+    method image() = "gameOver.jpeg"
 }

@@ -32,11 +32,10 @@ object configuracionJuego {
             game.addVisual(globo)
             marcadorPuntaje.mostrar()
             
-            keyboard.left().whilePressedDo({ globo.direccionActual("izquierda") }, 50)
-            keyboard.right().whilePressedDo({ globo.direccionActual("derecha") }, 50)
+            keyboard.left().whilePressedDo({ globo.mover(izquierda) }, 350)
+            keyboard.right().whilePressedDo({ globo.mover(derecha) }, 350)
             
             game.onTick(350, "movimientoGlobo", {
-                globo.moverseHorizontal()
                 globo.avanzarAltura()
             })
 
@@ -46,7 +45,7 @@ object configuracionJuego {
                 })
             
             game.onCollideDo(globo, { elemento => elemento.interaccion() })
-            
+
             generadorDeNubes.reiniciar()
             generadorDeConsumibles.reiniciar()
             game.onTick(200, "generadorNubes", { generadorDeNubes.generar() })

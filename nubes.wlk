@@ -60,6 +60,7 @@ object generadorDeNubes {
     method reiniciar() {
         self.limpiarNubes()
         ultimaAltura = 3
+        acelerador = 1
     }
     
     

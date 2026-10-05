@@ -1,5 +1,8 @@
 import globo.*
 
+
+//hay que modificar varios test porque se cambio el metodo de mover del globo
+
 describe "globo" {
 
     method initialize() {
