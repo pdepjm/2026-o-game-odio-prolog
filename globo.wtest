@@ -1,13 +1,12 @@
 import globo.*
 
 
-//hay que modificar varios test porque se cambio el metodo de mover del globo
-
 describe "globo" {
 
     method initialize() {
         game.width(7)
         game.height(8)
+        globo.reiniciar()
     }
 
     test "arranca en (5,2) con altura 2, puntaje 0 y sin dirección" {
@@ -18,35 +17,68 @@ describe "globo" {
         assert.equals("ninguna", globo.direccionActual())
     }
 
-    test "si la dirección es derecha, se mueve una columna a la derecha" {
-        globo.direccionActual("derecha")
-        globo.moverseHorizontal()
+    test "si se mueve a la derecha, avanza una columna" {
+        globo.position(game.at(5, 2))
+        globo.mover(derecha)
+
         assert.equals(6, globo.position().x())
     }
 
-    test "si la dirección es izquierda, se mueve una columna a la izquierda" {
-        globo.direccionActual("izquierda")
-        globo.moverseHorizontal()
+    test "si se mueve a la izquierda, retrocede una columna" {
+        globo.position(game.at(5, 2))
+        globo.mover(izquierda)
+
         assert.equals(4, globo.position().x())
     }
 
-    test "sin dirección no se mueve" {
-        globo.moverseHorizontal()
-        assert.equals(5, globo.position().x())
-    }
-
-    test "no se sale del tablero por la derecha" {
+    test "no se mueve si está en el límite derecho" {
         globo.position(game.at(6, 2))
-        globo.direccionActual("derecha")
-        globo.moverseHorizontal()
+        globo.mover(derecha)
+
         assert.equals(6, globo.position().x())
     }
 
-    test "no se sale del tablero por la izquierda" {
+    test "no se mueve si está en el límite izquierdo" {
         globo.position(game.at(0, 2))
-        globo.direccionActual("izquierda")
-        globo.moverseHorizontal()
+        globo.mover(izquierda)
+
         assert.equals(0, globo.position().x())
     }
 
+    test "avanzar altura aumenta la altura en 1" {
+        globo.reiniciar()
+
+        globo.avanzarAltura()
+
+        assert.equals(3, globo.altura())
+    }
+
+    test "avanzar altura aumenta el puntaje en 1" {
+        globo.reiniciar()
+
+        globo.avanzarAltura()
+
+        assert.equals(1, globo.puntaje())
+    }
+
+    test "cada avance aumenta altura y puntaje" {
+        globo.reiniciar()
+
+        globo.avanzarAltura()
+        globo.avanzarAltura()
+        globo.avanzarAltura()
+
+        assert.equals(5, globo.altura())
+        assert.equals(3, globo.puntaje())
+    }
+
+    test "reiniciar devuelve el puntaje a 0" {
+        globo.avanzarAltura()
+        globo.avanzarAltura()
+
+        globo.reiniciar()
+
+        assert.equals(0, globo.puntaje())
+        assert.equals(2, globo.altura())
+    }
 }
