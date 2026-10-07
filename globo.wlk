@@ -1,6 +1,7 @@
 import wollok.game.*
 import consumibles.*
 import nubes.*
+import generadores.*
 
 
 
@@ -15,8 +16,8 @@ object globo {
     method morir() {
         if (vivo) {
             vivo = false
-            generadorDeConsumibles.limpiarConsumibles()
-            generadorDeNubes.limpiarNubes()
+            generadorDeConsumibles.limpiarElementos()
+            generadorDeNubes.limpiarElementos()
             game.removeTickEvent("movimientoGlobo")
             game.removeTickEvent("generadorNubes")
             game.removeTickEvent("generadorConsumibles")
@@ -58,8 +59,8 @@ object globo {
         puntaje = 0
         direccionActual = "ninguna"
         vivo = true
-        generadorDeNubes.limpiarNubes()
-        generadorDeConsumibles.limpiarConsumibles()
+        generadorDeNubes.limpiarElementos()
+        generadorDeConsumibles.limpiarElementos()
     }
 
 //     method realentizar() {

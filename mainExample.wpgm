@@ -3,7 +3,7 @@ import wollok.game.*
 import nubes.*
 import globo.*
 import consumibles.*
-
+import generadores.*
 
 class Digito {
     
@@ -29,6 +29,7 @@ object configuracionJuego {
             game.clear()
 
             globo.reiniciar()
+            estadoNubes.acelerador(1)
             game.addVisual(globo)
             marcadorPuntaje.mostrar()
             
@@ -40,8 +41,8 @@ object configuracionJuego {
             })
 
             game.onTick(350, "movimientoNubes", {
-                generadorDeNubes.moverNubes() 
-                generadorDeConsumibles.moverConsumibles()
+                generadorDeNubes.moverElementos() 
+                generadorDeConsumibles.moverElementos()
                 })
             
             game.onCollideDo(globo, { elemento => elemento.interaccion() })
@@ -68,4 +69,3 @@ program PepitaGame {
         configuracionJuego.iniciar()
         game.start()
     }
-
