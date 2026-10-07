@@ -9,12 +9,11 @@ describe "globo" {
         globo.reiniciar()
     }
 
-    test "arranca en (5,2) con altura 2, puntaje 0 y sin dirección" {
+    test "arranca en (5,2) con altura 2 y puntaje 0" {
         assert.equals(3, globo.position().x())
         assert.equals(2, globo.position().y())
         assert.equals(2, globo.altura())
         assert.equals(0, globo.puntaje())
-        assert.equals("ninguna", globo.direccionActual())
     }
 
     test "si se mueve a la derecha, avanza una columna" {

@@ -49,8 +49,11 @@ object configuracionJuego {
 
             generadorDeNubes.reiniciar()
             generadorDeConsumibles.reiniciar()
-            game.onTick(200, "generadorNubes", { generadorDeNubes.generar() })
-            game.onTick(1000, "generadorConsumibles", {generadorDeConsumibles.generar()})
+            estadoConsumibles.reiniciar()
+            estadoNubes.reiniciar()
+
+            game.onTick(350, "generadorNubes", { generadorDeNubes.generar() })
+            game.onTick(2000, "generadorConsumibles", {generadorDeConsumibles.generar()})
             //COMENTARIO PARA ARREGLAR: EL ITEM PUEDE APARECER EN EL MISMO LUGAR AL MISMO TIEMPO
             //SETTEAR DIFERENTES POSICIONES PARA AMBOS GENERADORES
             keyboard.r().onPressDo({ self.iniciar() })

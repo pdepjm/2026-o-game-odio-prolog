@@ -6,18 +6,21 @@ import consumibles.*
 class Generador {
     var ultimaAltura = 3 
     const elementos = []
-    
+    var ultimoXdeUltimaInstancia = 0 //inicializo con valor al azar donde no va a poder posicionarse la primera nube/consumible
     // TIPO DE OBJETO
     const accionCrearElemento 
 
     method generar() {
         if (globo.altura() >= ultimaAltura - 10) {
-            const nuevaX = (0..game.width() - 1).anyOne()
-            ultimaAltura = ultimaAltura + (4..7).anyOne()
+
+            const posXposibles = (0..game.width())
+            const nuevaX = posXposibles.filter({n => n != ultimoXdeUltimaInstancia}).anyOne() //quiero que 2 nubes/consumibles que se generen una atras de la otra no aparezcan en la misma posicion x
+            ultimoXdeUltimaInstancia = nuevaX
+            ultimaAltura = ultimaAltura + (1..3).anyOne()
             
-            const yEnPantalla = ultimaAltura - globo.altura() + 2
+            //const yEnPantalla = ultimaAltura - globo.altura() + 2 //la altura real del globo no se modifica esto hacia que cada vez aparezcan menos nubes y consumibles
             
-            const nuevoElemento = accionCrearElemento.apply(game.at(nuevaX, yEnPantalla))
+            const nuevoElemento = accionCrearElemento.apply(game.at(nuevaX, 10)) 
             
             if (nuevoElemento != null) {
                 game.addVisual(nuevoElemento)

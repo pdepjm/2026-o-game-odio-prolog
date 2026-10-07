@@ -3,11 +3,18 @@ import globo.*
 import wollok.game.*
 
 object estadoConsumibles {
-    var property acelerador = 1
+    var acelerador = 1
+
+    method acelerador() = acelerador 
+
 
     method acelerar(){
         acelerador = 2 
         game.schedule(10000, { acelerador = 1 })
+    }
+
+    method reiniciar(){
+        acelerador = 1 
     }
 }
 class SanLorenzo{
@@ -22,13 +29,21 @@ class SanLorenzo{
         estadoNubes.acelerar()
         estadoConsumibles.acelerar()
         game.removeVisual(self)
-        game.sound("acabaDePerderSanlo.mp3").play()
+        const musica = game.sound("acabaDePerderSanlo.mp3")
+        musica.play()
         game.onTick(350, "imagenDeSanlo", {
             const opcion = [sanloDiminuto].anyOne()
             game.addVisual(opcion)
             game.schedule(250, {game.removeVisual(opcion)})
+
+            if(!globo.vivo()){
+                musica.stop()
+                game.removeTickEvent("imagenDeSanlo")
+            }
         })
-        game.schedule(10000, {game.removeTickEvent("imagenDeSanlo")})
+        game.schedule(10000, {
+            game.removeTickEvent("imagenDeSanlo")
+        })
     }
 
     method moverse() {

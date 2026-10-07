@@ -8,6 +8,10 @@ object estadoNubes {
         acelerador = 2 
         game.schedule(10000, { acelerador = 1 })
     }
+
+    method reiniciar(){
+        acelerador = 1
+    }
 }
 
 class Nube {
