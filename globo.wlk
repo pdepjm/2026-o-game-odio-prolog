@@ -42,6 +42,10 @@ object globo {
         puntaje = puntaje + 1
     }
 
+    method sumarPuntaje(cantidad) {
+        puntaje = puntaje + cantidad
+    }   
+
     method reiniciar() {
         position = game.at(game.width().div(2), 2)
         altura = 2

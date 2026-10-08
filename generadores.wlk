@@ -56,6 +56,6 @@ class Generador {
 object generadorDeNubes inherits Generador(accionCrearElemento = { pos => new Nube(position = pos) }) {}
 
 object generadorDeConsumibles inherits Generador(accionCrearElemento = { pos => 
-    const opcion = [1].anyOne()
-    if (opcion == 1) new SanLorenzo(position = pos) else null
+    const opcion = [1, 2].anyOne()
+    if (opcion == 1) new SanLorenzo(position = pos) else new ChiquiTapia(position = pos)
 }) {}

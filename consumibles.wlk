@@ -56,6 +56,25 @@ class SanLorenzo{
     }
 }
 
+class ChiquiTapia {
+    var property position
+
+    method image() = "chiquiTapia.png"
+
+    method interaccion() {
+        globo.sumarPuntaje(5)
+        game.removeVisual(self)
+    }
+
+    method moverse() {
+        if(self.position().y() != 3) {
+            self.position(self.position().down(estadoConsumibles.acelerador()))
+        } else {
+            self.position(self.position().down(1))
+        }
+    }
+}
+
 object sanloDiminuto{
     var property position = game.at(3,5)
     method image() = "memeSanlo.png"
