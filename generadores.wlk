@@ -20,7 +20,7 @@ class Generador {
             
             //const yEnPantalla = ultimaAltura - globo.altura() + 2 //la altura real del globo no se modifica esto hacia que cada vez aparezcan menos nubes y consumibles
             
-            const nuevoElemento = accionCrearElemento.apply(game.at(nuevaX, 10)) 
+            const nuevoElemento = accionCrearElemento.apply(game.at(nuevaX, game.height())) //aparece justo arriba de la pantalla
             
             if (nuevoElemento != null) {
                 game.addVisual(nuevoElemento)
@@ -33,7 +33,7 @@ class Generador {
         elementos.forEach({ e => 
             e.moverse() 
         })
-        const elementosViejos = elementos.filter({ e => e.position().y() < -2 }) 
+        const elementosViejos = elementos.filter({ e => e.position().y() < 0 }) //ya salio de la pantalla
         elementosViejos.forEach({ e => 
             if (game.hasVisual(e)) { game.removeVisual(e) } 
             elementos.remove(e) 
@@ -56,6 +56,8 @@ class Generador {
 object generadorDeNubes inherits Generador(accionCrearElemento = { pos => new Nube(position = pos) }) {}
 
 object generadorDeConsumibles inherits Generador(accionCrearElemento = { pos => 
-    const opcion = [1, 2].anyOne()
-    if (opcion == 1) new SanLorenzo(position = pos) else new ChiquiTapia(position = pos)
+    const opcion = [1, 2, 3].anyOne()
+    if (opcion == 1) new SanLorenzo(position = pos)
+    else if (opcion == 2) new ChiquiTapia(position = pos)
+    else new Azzaro(position = pos)
 }) {}

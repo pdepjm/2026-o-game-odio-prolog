@@ -14,9 +14,36 @@ object estadoConsumibles {
     }
 
     method reiniciar(){
-        acelerador = 1 
+        acelerador = 1
     }
 }
+
+// Wollok guarda cada sonido que se reproduce hasta que se le hace stop(),
+// aunque ya haya terminado de sonar. Si no se frenan, se acumulan y el juego se traba.
+object sonidos {
+    const activos = []
+
+    method reproducir(archivo, volumen, duracion) {
+        const sonido = game.sound(archivo)
+        sonido.volume(volumen)
+        sonido.play()
+        activos.add(sonido)
+        game.schedule(duracion, { self.detener(sonido) })
+        return sonido
+    }
+
+    method detener(sonido) {
+        if (sonido.played()) {
+            sonido.stop()
+        }
+        activos.remove(sonido)
+    }
+
+    method detenerTodos() {
+        activos.copy().forEach({ sonido => self.detener(sonido) })
+    }
+}
+
 class SanLorenzo{
     var property position
 
@@ -29,15 +56,16 @@ class SanLorenzo{
         estadoNubes.acelerar()
         estadoConsumibles.acelerar()
         game.removeVisual(self)
-        const musica = game.sound("acabaDePerderSanlo.mp3")
-        musica.play()
+        const musica = sonidos.reproducir("acabaDePerderSanlo.mp3", 0.5, 11000)
         game.onTick(350, "imagenDeSanlo", {
             const opcion = [sanloDiminuto].anyOne()
-            game.addVisual(opcion)
-            game.schedule(250, {game.removeVisual(opcion)})
+            if (!game.hasVisual(opcion)) {
+                game.addVisual(opcion)
+                game.schedule(250, { if (game.hasVisual(opcion)) game.removeVisual(opcion) })
+            }
 
             if(!globo.vivo()){
-                musica.stop()
+                sonidos.detener(musica)
                 game.removeTickEvent("imagenDeSanlo")
             }
         })
@@ -64,6 +92,26 @@ class ChiquiTapia {
     method interaccion() {
         globo.sumarPuntaje(5)
         game.removeVisual(self)
+        sonidos.reproducir("chiquiTapia.mp3", 0.3, 16000)
+    }
+
+    method moverse() {
+        if(self.position().y() != 3) {
+            self.position(self.position().down(estadoConsumibles.acelerador()))
+        } else {
+            self.position(self.position().down(1))
+        }
+    }
+}
+
+class Azzaro {
+    var property position
+
+    method image() = "azzaro.png"
+
+    method interaccion() {
+        game.removeVisual(self)
+        sonidos.reproducir("azzaro.mp3", 0.3, 8000)
     }
 
     method moverse() {
