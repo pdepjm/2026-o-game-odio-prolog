@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="V1HD4OmVUDTW6d4Y_AeW" name="Página-1">
-        <mxGraphModel dx="2099" dy="1814" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="light-dark(#000000,#121212)" math="0" shadow="0">
+        <mxGraphModel dx="4366" dy="2869" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="light-dark(#000000,#121212)" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -266,27 +266,69 @@
                 <mxCell id="UOTim_Ymm60MDTV0YNT2-143" edge="1" parent="1" source="UOTim_Ymm60MDTV0YNT2-70" style="edgeStyle=none;shape=connector;rounded=1;html=1;entryX=0.115;entryY=1.154;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;dashed=1;" target="UOTim_Ymm60MDTV0YNT2-112">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="azzaro" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneFillColor=default;" value="azzaro(C)" vertex="1"><mxGeometry height="112" width="200" x="880" y="680" as="geometry"/></mxCell>
-                <mxCell id="azzaro-a0" parent="azzaro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- posicion" vertex="1"><mxGeometry height="26" width="200" y="26" as="geometry"/></mxCell>
-                <mxCell id="azzaro-linea" parent="azzaro" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1"><mxGeometry height="8" width="200" y="52" as="geometry"/></mxCell>
-                <mxCell id="azzaro-m0" parent="azzaro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ interaccion()" vertex="1"><mxGeometry height="26" width="200" y="60" as="geometry"/></mxCell>
-                <mxCell id="azzaro-m1" parent="azzaro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ moverse()" vertex="1"><mxGeometry height="26" width="200" y="86" as="geometry"/></mxCell>
-                <mxCell id="azzaro-implementa" edge="1" parent="1" source="azzaro" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;dashed=1;" target="UOTim_Ymm60MDTV0YNT2-108"><mxGeometry relative="1" as="geometry"/></mxCell>
-                <mxCell id="azzaro-creado" edge="1" parent="1" source="UOTim_Ymm60MDTV0YNT2-59" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" target="azzaro"><mxGeometry relative="1" as="geometry"/></mxCell>
-                <mxCell id="azzaro-cantidad" parent="1" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;fontColor=#FFFFFF;" value="0..*" vertex="1"><mxGeometry height="30" width="60" x="840" y="800" as="geometry"/></mxCell>
-                <mxCell id="sonidos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneFillColor=default;" value="sonidos(WKO)" vertex="1"><mxGeometry height="138" width="270" x="900" y="400" as="geometry"/></mxCell>
-                <mxCell id="sonidos-a0" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- activos" vertex="1"><mxGeometry height="26" width="270" y="26" as="geometry"/></mxCell>
-                <mxCell id="sonidos-linea" parent="sonidos" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1"><mxGeometry height="8" width="270" y="52" as="geometry"/></mxCell>
-                <mxCell id="sonidos-m0" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ reproducir(archivo, volumen, duracion)" vertex="1"><mxGeometry height="26" width="270" y="60" as="geometry"/></mxCell>
-                <mxCell id="sonidos-m1" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ detener(sonido)" vertex="1"><mxGeometry height="26" width="270" y="86" as="geometry"/></mxCell>
-                <mxCell id="sonidos-m2" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ detenerTodos()" vertex="1"><mxGeometry height="26" width="270" y="112" as="geometry"/></mxCell>
-                <mxCell id="sanlo-usa-sonidos" edge="1" parent="1" source="UOTim_Ymm60MDTV0YNT2-117" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;dashed=1;" target="sonidos"><mxGeometry relative="1" as="geometry"/></mxCell>
-                <mxCell id="chiqui-usa-sonidos" edge="1" parent="1" source="UOTim_Ymm60MDTV0YNT2-92" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;dashed=1;" target="sonidos"><mxGeometry relative="1" as="geometry"/></mxCell>
-                <mxCell id="azzaro-usa-sonidos" edge="1" parent="1" source="azzaro" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;dashed=1;" target="sonidos"><mxGeometry relative="1" as="geometry"/></mxCell>
-                <mxCell id="pantallaInicio" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneFillColor=default;" value="pantallaInicio(WKO)" vertex="1"><mxGeometry height="86" width="200" x="850" y="136" as="geometry"/></mxCell>
-                <mxCell id="pantallaInicio-a0" parent="pantallaInicio" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- position" vertex="1"><mxGeometry height="26" width="200" y="26" as="geometry"/></mxCell>
-                <mxCell id="pantallaInicio-linea" parent="pantallaInicio" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1"><mxGeometry height="8" width="200" y="52" as="geometry"/></mxCell>
-                <mxCell id="pantallaInicio-m0" parent="pantallaInicio" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ image()" vertex="1"><mxGeometry height="26" width="200" y="60" as="geometry"/></mxCell>
+                <mxCell id="azzaro" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneFillColor=default;" value="azzaro(C)" vertex="1">
+                    <mxGeometry height="112" width="200" x="880" y="680" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-a0" parent="azzaro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- posicion" vertex="1">
+                    <mxGeometry height="26" width="200" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-linea" parent="azzaro" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+                    <mxGeometry height="8" width="200" y="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-m0" parent="azzaro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ interaccion()" vertex="1">
+                    <mxGeometry height="26" width="200" y="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-m1" parent="azzaro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ moverse()" vertex="1">
+                    <mxGeometry height="26" width="200" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-implementa" edge="1" parent="1" source="azzaro" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;dashed=1;" target="UOTim_Ymm60MDTV0YNT2-108">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-creado" edge="1" parent="1" source="UOTim_Ymm60MDTV0YNT2-59" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" target="azzaro">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-cantidad" parent="1" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;fontColor=#FFFFFF;" value="0..*" vertex="1">
+                    <mxGeometry height="30" width="60" x="840" y="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="sonidos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneFillColor=default;" value="sonidos(WKO)" vertex="1">
+                    <mxGeometry height="138" width="270" x="900" y="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="sonidos-a0" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- activos" vertex="1">
+                    <mxGeometry height="26" width="270" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="sonidos-linea" parent="sonidos" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+                    <mxGeometry height="8" width="270" y="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="sonidos-m0" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ reproducir(archivo, volumen, duracion)" vertex="1">
+                    <mxGeometry height="26" width="270" y="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sonidos-m1" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ detener(sonido)" vertex="1">
+                    <mxGeometry height="26" width="270" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="sonidos-m2" parent="sonidos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ detenerTodos()" vertex="1">
+                    <mxGeometry height="26" width="270" y="112" as="geometry"/>
+                </mxCell>
+                <mxCell id="sanlo-usa-sonidos" edge="1" parent="1" source="UOTim_Ymm60MDTV0YNT2-117" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;dashed=1;" target="sonidos">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="chiqui-usa-sonidos" edge="1" parent="1" source="UOTim_Ymm60MDTV0YNT2-92" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;dashed=1;" target="sonidos">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="azzaro-usa-sonidos" edge="1" parent="1" source="azzaro" style="edgeStyle=none;shape=connector;rounded=1;html=1;strokeColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;dashed=1;" target="sonidos">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="pantallaInicio" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneFillColor=default;" value="pantallaInicio(WKO)" vertex="1">
+                    <mxGeometry height="86" width="200" x="850" y="136" as="geometry"/>
+                </mxCell>
+                <mxCell id="pantallaInicio-a0" parent="pantallaInicio" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- position" vertex="1">
+                    <mxGeometry height="26" width="200" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="pantallaInicio-linea" parent="pantallaInicio" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+                    <mxGeometry height="8" width="200" y="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="pantallaInicio-m0" parent="pantallaInicio" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ image()" vertex="1">
+                    <mxGeometry height="26" width="200" y="60" as="geometry"/>
+                </mxCell>
             </root>
         </mxGraphModel>
     </diagram>

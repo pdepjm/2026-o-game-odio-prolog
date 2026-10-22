@@ -25,8 +25,8 @@ object marcadorPuntaje {
 }
 
 object pantallaInicio {
-    var property position = game.at(2, 2)
-    method image() = "inicio.png"
+    var property position = game.at(-1, 0)
+    method image() = "inicio3.png"
 }
 
 object configuracionJuego {                     
@@ -71,7 +71,7 @@ program PepitaGame {
         game.height(8)
         game.width(7)
         game.cellSize(250)
-        game.boardGround("cielo3.png")
+        game.boardGround("cielo.png")
 
         game.sound("davanti_morocha.mp3").play()
 
