@@ -4,6 +4,8 @@ import nubes.*
 import globo.*
 import consumibles.*
 import generadores.*
+import gravedad.*
+import ritmo.*
 
 class Digito {
     
@@ -33,7 +35,8 @@ object configuracionJuego {
         method iniciar() {
             sonidos.detenerTodos()
             game.clear()
-
+            gravedad.reiniciar()
+            // keyboard.t().onPressDo({ gravedad.rotar() })   // TEMPORAL, solo para probar
             globo.reiniciar()
             estadoNubes.acelerador(1)
             game.addVisual(globo)
@@ -42,14 +45,9 @@ object configuracionJuego {
             keyboard.left().whilePressedDo({ globo.mover(izquierda) }, 350)
             keyboard.right().whilePressedDo({ globo.mover(derecha) }, 350)
             
-            game.onTick(350, "movimientoGlobo", {
-                globo.avanzarAltura()
-            })
-
-            game.onTick(350, "movimientoNubes", {
-                generadorDeNubes.moverElementos() 
-                generadorDeConsumibles.moverElementos()
-                })
+            ritmo.reiniciar()
+            ritmo.arrancar()
+            
             
             game.onCollideDo(globo, { elemento => elemento.interaccion() })
 
@@ -58,7 +56,7 @@ object configuracionJuego {
             estadoConsumibles.reiniciar()
             estadoNubes.reiniciar()
 
-            game.onTick(350, "generadorNubes", { generadorDeNubes.generar() })
+            
             game.onTick(2000, "generadorConsumibles", {generadorDeConsumibles.generar()})
             //COMENTARIO PARA ARREGLAR: EL ITEM PUEDE APARECER EN EL MISMO LUGAR AL MISMO TIEMPO
             //SETTEAR DIFERENTES POSICIONES PARA AMBOS GENERADORES
@@ -80,3 +78,4 @@ program PepitaGame {
 
         game.start()
     }
+

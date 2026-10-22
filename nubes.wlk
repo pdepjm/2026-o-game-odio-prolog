@@ -1,5 +1,6 @@
 import wollok.game.*
 import globo.*
+import gravedad.*
 
 object estadoNubes {
     var property acelerador = 1
@@ -18,7 +19,7 @@ class Nube {
     var property position
     var property opacidad = (1..4).anyOne() == 1
 
-    method image() = if(opacidad) "nube_transparente.png" else "nubeee.png"
+    method image() = gravedad.imagen(if(opacidad) "nube_transparente" else "nubeee")
     
     method interaccion() {
         if (!opacidad) {
@@ -27,10 +28,6 @@ class Nube {
     }
 
     method moverse() {
-        if(self.position().y() != 3) {
-            self.position(self.position().down(estadoNubes.acelerador()))
-        } else {
-            self.position(self.position().down(1))
-        } //esto es para que cuando acelere el globo tenga que pasar por la casilla del glob si o si
+        self.position(gravedad.siguientePosicion(self.position(), estadoNubes.acelerador()))
     }
 }
