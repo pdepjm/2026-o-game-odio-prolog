@@ -80,4 +80,17 @@ describe "globo" {
         assert.equals(0, globo.puntaje())
         assert.equals(2, globo.altura())
     }
+
+    test "sumarPuntaje aumenta la cantidad de puntos indicada" {
+        globo.reiniciar()
+        globo.sumarPuntaje(5)
+        assert.equals(5, globo.puntaje())
+    }
+
+    test "morir cambia el estado del globo a no vivo" {
+        globo.reiniciar()
+        game.addVisual(globo)
+        globo.morir()
+        assert.notThat(globo.vivo())
+    }
 }

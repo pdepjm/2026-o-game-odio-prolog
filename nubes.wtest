@@ -1,0 +1,46 @@
+import nubes.*
+import globo.*
+import wollok.game.*
+
+describe "Pruebas de comportamiento de las Nubes" {
+
+    method initialize() {
+        game.width(7)
+        game.height(8)
+        globo.reiniciar()
+        estadoNubes.reiniciar()
+    }
+
+    test "Una nube transparente (opacidad true) no mata al globo en la interaccion" {
+        const nubeTransparente = new Nube(position = game.at(3, 2), opacidad = true)
+        nubeTransparente.interaccion()
+        assert.that(globo.vivo())
+    }
+
+    test "Una nube opaca (opacidad false) mata al globo en la interaccion" {
+        const nubeOpaca = new Nube(position = game.at(3, 2), opacidad = false)
+        game.addVisual(globo)
+        nubeOpaca.interaccion()
+        assert.notThat(globo.vivo())
+    }
+
+    test "Las nubes se mueven hacia abajo 1 lugar de forma normal" {
+        const nube = new Nube(position = game.at(3, 5), opacidad = true)
+        nube.moverse()
+        assert.equals(4, nube.position().y())
+    }
+
+    test "Si las nubes estan aceleradas, se mueven 2 lugares hacia abajo (si y != 3)" {
+        estadoNubes.acelerar()
+        const nube = new Nube(position = game.at(3, 5), opacidad = true)
+        nube.moverse()
+        assert.equals(3, nube.position().y())
+    }
+
+    test "Aunque esten aceleradas, si la nube esta en y=3 solo baja 1 lugar" {
+        estadoNubes.acelerar()
+        const nube = new Nube(position = game.at(3, 3), opacidad = true)
+        nube.moverse()
+        assert.equals(2, nube.position().y())
+    }
+}
