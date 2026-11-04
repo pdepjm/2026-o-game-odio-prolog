@@ -2,6 +2,8 @@ import wollok.game.*
 import consumibles.*
 import nubes.*
 import generadores.*
+import gravedad.*
+import ritmo.*
 
 
 
@@ -21,15 +23,14 @@ object globo {
             vivo = false
             generadorDeConsumibles.limpiarElementos()
             generadorDeNubes.limpiarElementos()
-            game.removeTickEvent("movimientoGlobo")
-            game.removeTickEvent("generadorNubes")
+            ritmo.detener()
             game.removeTickEvent("generadorConsumibles")
             game.removeVisual(self)
             game.addVisual(gameOver)
         }
     }
 
-    method image() = "personajeGlobo.png"
+    method image() = gravedad.imagen("personajeGlobo")
 
     method mover(direccion) {
         if (direccion.puedeMoverse(self)) {

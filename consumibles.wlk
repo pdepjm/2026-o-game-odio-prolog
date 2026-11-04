@@ -1,6 +1,7 @@
 import nubes.*
 import globo.*
 import wollok.game.*
+import gravedad.*
 
 object estadoConsumibles {
     var acelerador = 1
@@ -47,7 +48,7 @@ object sonidos {
 class SanLorenzo{
     var property position
 
-    method image() = "caslaCar.png"
+    method image() = gravedad.imagen("caslaCar")
 
     //quiero que el "SanLorenzo" choque con el personaje y lo realentize
 
@@ -75,19 +76,14 @@ class SanLorenzo{
     }
 
     method moverse() {
-        if(self.position().y() != 3) {
-            self.position(self.position().down(estadoConsumibles.acelerador()))
-        } else {
-            self.position(self.position().down(1))
-        } //esto es para que cuando acelere el globo tenga que pasar por la casilla del glob si o si
-        //copio y pego de nubes :P
+        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
     }
 }
 
 class ChiquiTapia {
     var property position
 
-    method image() = "chiquiTapia.png"
+    method image() = gravedad.imagen("chiquiTapia")
 
     method interaccion() {
         globo.sumarPuntaje(5)
@@ -96,18 +92,14 @@ class ChiquiTapia {
     }
 
     method moverse() {
-        if(self.position().y() != 3) {
-            self.position(self.position().down(estadoConsumibles.acelerador()))
-        } else {
-            self.position(self.position().down(1))
-        }
+        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
     }
 }
 
 class Azzaro {
     var property position
 
-    method image() = "azzaro.png"
+    method image() = gravedad.imagen("azzaro")
 
     method interaccion() {
         game.removeVisual(self)
@@ -115,15 +107,27 @@ class Azzaro {
     }
 
     method moverse() {
-        if(self.position().y() != 3) {
-            self.position(self.position().down(estadoConsumibles.acelerador()))
-        } else {
-            self.position(self.position().down(1))
-        }
+        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
+    }
+}
+
+class Ciclon {
+    var property position
+
+    method image() = gravedad.imagen("ciclon")
+
+    method interaccion() {
+        game.removeVisual(self)
+        gravedad.rotar()
+    }
+
+    method moverse() {
+        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
     }
 }
 
 object sanloDiminuto{
     var property position = game.at(3,5)
-    method image() = "memeSanlo.png"
+    method image() = gravedad.imagen("memeSanlo")
+    method interaccion() { }   // no hace nada: evita el error si el globo lo toca
 }
