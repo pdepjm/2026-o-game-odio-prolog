@@ -4,9 +4,9 @@ import generadores.*
 
 object ritmo {
     const intervaloInicial = 500   // antes era 350 (más alto = más lento)
-    const intervaloMinimo = 250    // el juego nunca va más rápido que esto
-    const reduccion = 20           // cuántos ms se acorta el intervalo en cada aceleración
-    const cadaCuanto = 10000       // cada cuántos ms se acelera (10 segundos)
+    const intervaloMinimo = 150    // el juego nunca va más rápido que esto
+    const reduccion = 50           // cuántos ms se acorta el intervalo en cada aceleración
+    const cadaCuanto = 5000       // cada cuántos ms se acelera (5 segundos)
 
     var intervalo = 500
 
