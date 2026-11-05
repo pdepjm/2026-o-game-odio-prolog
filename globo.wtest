@@ -1,0 +1,96 @@
+import globo.*
+
+
+describe "globo" {
+
+    method initialize() {
+        game.width(7)
+        game.height(8)
+        globo.reiniciar()
+    }
+
+    test "arranca en (5,2) con altura 2 y puntaje 0" {
+        assert.equals(3, globo.position().x())
+        assert.equals(2, globo.position().y())
+        assert.equals(2, globo.altura())
+        assert.equals(0, globo.puntaje())
+    }
+
+    test "si se mueve a la derecha, avanza una columna" {
+        globo.position(game.at(5, 2))
+        globo.mover(derecha)
+
+        assert.equals(6, globo.position().x())
+    }
+
+    test "si se mueve a la izquierda, retrocede una columna" {
+        globo.position(game.at(5, 2))
+        globo.mover(izquierda)
+
+        assert.equals(4, globo.position().x())
+    }
+
+    test "no se mueve si está en el límite derecho" {
+        globo.position(game.at(6, 2))
+        globo.mover(derecha)
+
+        assert.equals(6, globo.position().x())
+    }
+
+    test "no se mueve si está en el límite izquierdo" {
+        globo.position(game.at(0, 2))
+        globo.mover(izquierda)
+
+        assert.equals(0, globo.position().x())
+    }
+
+    test "avanzar altura aumenta la altura en 1" {
+        globo.reiniciar()
+
+        globo.avanzarAltura()
+
+        assert.equals(3, globo.altura())
+    }
+
+    test "avanzar altura aumenta el puntaje en 1" {
+        globo.reiniciar()
+
+        globo.avanzarAltura()
+
+        assert.equals(1, globo.puntaje())
+    }
+
+    test "cada avance aumenta altura y puntaje" {
+        globo.reiniciar()
+
+        globo.avanzarAltura()
+        globo.avanzarAltura()
+        globo.avanzarAltura()
+
+        assert.equals(5, globo.altura())
+        assert.equals(3, globo.puntaje())
+    }
+
+    test "reiniciar devuelve el puntaje a 0" {
+        globo.avanzarAltura()
+        globo.avanzarAltura()
+
+        globo.reiniciar()
+
+        assert.equals(0, globo.puntaje())
+        assert.equals(2, globo.altura())
+    }
+
+    test "sumarPuntaje aumenta la cantidad de puntos indicada" {
+        globo.reiniciar()
+        globo.sumarPuntaje(5)
+        assert.equals(5, globo.puntaje())
+    }
+
+    test "morir cambia el estado del globo a no vivo" {
+        globo.reiniciar()
+        game.addVisual(globo)
+        globo.morir()
+        assert.notThat(globo.vivo())
+    }
+}

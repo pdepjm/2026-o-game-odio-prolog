@@ -1,0 +1,58 @@
+import consumibles.*
+import nubes.*
+import globo.*
+import wollok.game.*
+
+describe "Pruebas de efectos y movimientos de los Consumibles" {
+
+    method initialize() {
+        game.width(7)
+        game.height(8)
+        globo.reiniciar()
+        estadoConsumibles.reiniciar()
+        estadoNubes.reiniciar()
+    }
+
+    test "Chiqui Tapia le suma 5 de puntaje al globo" {
+        const tapia = new ChiquiTapia(position = game.at(3, 2))
+        game.addVisual(tapia) // Evita que game.removeVisual tire error
+        tapia.interaccion()
+        assert.equals(5, globo.puntaje())
+    }
+
+    test "San Lorenzo cambia la aceleracion de nubes y consumibles a 2" {
+        const sanlo = new SanLorenzo(position = game.at(3, 2))
+        game.addVisual(sanlo) 
+        sanlo.interaccion()
+        assert.equals(2, estadoNubes.acelerador())
+        assert.equals(2, estadoConsumibles.acelerador())
+    }
+    
+    test "Azzaro se remueve del tablero al interactuar pero no mata al globo" {
+        const azzaro = new Azzaro(position = game.at(3, 2))
+        game.addVisual(azzaro)
+        azzaro.interaccion()
+        assert.that(globo.vivo())
+        assert.notThat(game.hasVisual(azzaro))
+    }
+
+    test "Los consumibles se mueven hacia abajo normalmente (1 posicion)" {
+        const tapia = new ChiquiTapia(position = game.at(3, 5))
+        tapia.moverse()
+        assert.equals(4, tapia.position().y())
+    }
+
+    test "Los consumibles caen el doble de rapido si estan acelerados (y != 3)" {
+        estadoConsumibles.acelerar()
+        const tapia = new ChiquiTapia(position = game.at(3, 5))
+        tapia.moverse()
+        assert.equals(3, tapia.position().y())
+    }
+
+    test "Si el consumible esta acelerado pero en y=3, cae solo 1 lugar para asegurar colision" {
+        estadoConsumibles.acelerar()
+        const tapia = new ChiquiTapia(position = game.at(3, 3))
+        tapia.moverse()
+        assert.equals(2, tapia.position().y())
+    }
+}

@@ -1,11 +1,81 @@
 import wollok.game.*
 
-import example.pepita
+import nubes.*
+import globo.*
+import consumibles.*
+import generadores.*
+import gravedad.*
+import ritmo.*
 
-program PepitaGame {
-	game.title("Pepita")
-	game.height(10)
-	game.width(10)
+class Digito {
+    
+    const posicion
+    const divisor   // 1 = unidades, 10 = decenas, 100 = centenas, 1000 = miles
 
-	game.start()
+    method position() = posicion
+    method image() = self.valor().toString() + ".png"
+    method valor() = globo.puntaje().div(divisor) % 10
 }
+
+object marcadorPuntaje {
+    method mostrar() {
+        game.addVisual(new Digito(posicion = game.at(0, 7), divisor = 1000))
+        game.addVisual(new Digito(posicion = game.at(1, 7), divisor = 100))
+        game.addVisual(new Digito(posicion = game.at(2, 7), divisor = 10))
+        game.addVisual(new Digito(posicion = game.at(3, 7), divisor = 1))
+    }
+}
+
+object pantallaInicio {
+    var property position = game.at(-1, 0)
+    method image() = "inicio3.png"
+}
+
+object configuracionJuego {                     
+        method iniciar() {
+            sonidos.detenerTodos()
+            game.clear()
+            gravedad.reiniciar()
+            // keyboard.t().onPressDo({ gravedad.rotar() })   // TEMPORAL, solo para probar
+            globo.reiniciar()
+            estadoNubes.acelerador(1)
+            game.addVisual(globo)
+            marcadorPuntaje.mostrar()
+            
+            keyboard.left().whilePressedDo({ globo.mover(izquierda) }, 350)
+            keyboard.right().whilePressedDo({ globo.mover(derecha) }, 350)
+            
+            ritmo.reiniciar()
+            ritmo.arrancar()
+            
+            
+            game.onCollideDo(globo, { elemento => elemento.interaccion() })
+
+            generadorDeNubes.reiniciar()
+            generadorDeConsumibles.reiniciar()
+            estadoConsumibles.reiniciar()
+            estadoNubes.reiniciar()
+
+            
+            game.onTick(2000, "generadorConsumibles", {generadorDeConsumibles.generar()})
+            //COMENTARIO PARA ARREGLAR: EL ITEM PUEDE APARECER EN EL MISMO LUGAR AL MISMO TIEMPO
+            //SETTEAR DIFERENTES POSICIONES PARA AMBOS GENERADORES
+            keyboard.r().onPressDo({ self.iniciar() })
+        }                                              
+    }
+
+program PepitaGame {                               
+        game.title("GloboMania")
+        game.height(8)
+        game.width(7)
+        game.cellSize(250)
+        game.boardGround("cielo.png")
+
+        game.sound("davanti_morocha.mp3").play()
+
+        game.addVisual(pantallaInicio)
+        keyboard.r().onPressDo({ configuracionJuego.iniciar() })
+
+        game.start()
+    }
+

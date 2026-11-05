@@ -1,5 +1,13 @@
 ### [Nombre del juego]
 
-* Integrante 1
-* Integrante 2
-* Etc...
+Integrantes:
+
+Uriel Cwirenbaum
+
+Valentin Degenaro
+
+Tobias Isidro 
+
+Tiago Shebar
+
+Matias Schatzyki
