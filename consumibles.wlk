@@ -45,14 +45,27 @@ object sonidos {
     }
 }
 
-class SanLorenzo{
+class Consumible {
     var property position
 
-    method image() = gravedad.imagen("caslaCar")
+    // Cada consumible define cómo se llama su imagen (sin extensión) y qué pasa al chocar con el globo
+    method nombreImagen()
+    method interaccion()
+
+    method image() = gravedad.imagen(self.nombreImagen())
+
+    method moverse() {
+        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
+    }
+}
+
+class SanLorenzo inherits Consumible {
+
+    override method nombreImagen() = "caslaCar"
 
     //quiero que el "SanLorenzo" choque con el personaje y lo realentize
 
-    method interaccion(){
+    override method interaccion(){
         // globo.realentizar()
         estadoNubes.acelerar()
         estadoConsumibles.acelerar()
@@ -74,55 +87,36 @@ class SanLorenzo{
             game.removeTickEvent("imagenDeSanlo")
         })
     }
-
-    method moverse() {
-        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
-    }
 }
 
-class ChiquiTapia {
-    var property position
+class ChiquiTapia inherits Consumible {
 
-    method image() = gravedad.imagen("chiquiTapia")
+    override method nombreImagen() = "chiquiTapia"
 
-    method interaccion() {
+    override method interaccion() {
         globo.sumarPuntaje(5)
         game.removeVisual(self)
         sonidos.reproducir("chiquiTapia.mp3", 0.3, 16000)
     }
-
-    method moverse() {
-        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
-    }
 }
 
-class Azzaro {
-    var property position
+class Azzaro inherits Consumible {
 
-    method image() = gravedad.imagen("azzaro")
+    override method nombreImagen() = "azzaro"
 
-    method interaccion() {
+    override method interaccion() {
         game.removeVisual(self)
         sonidos.reproducir("azzaro.mp3", 0.3, 8000)
     }
-
-    method moverse() {
-        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
-    }
 }
 
-class Ciclon {
-    var property position
+class Ciclon inherits Consumible {
 
-    method image() = gravedad.imagen("ciclon")
+    override method nombreImagen() = "ciclon"
 
-    method interaccion() {
+    override method interaccion() {
         game.removeVisual(self)
         gravedad.rotar()
-    }
-
-    method moverse() {
-        self.position(gravedad.siguientePosicion(self.position(), estadoConsumibles.acelerador()))
     }
 }
 

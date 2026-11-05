@@ -72,6 +72,6 @@ object derecha {
 }
 
 object gameOver{
-    var property position = game.at(-1, 0)
+    var property position = game.at(0, 0)
     method image() = "gameOver3.png"
 }
