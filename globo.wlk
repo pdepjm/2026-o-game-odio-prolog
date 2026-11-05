@@ -24,6 +24,7 @@ object globo {
             generadorDeConsumibles.limpiarElementos()
             generadorDeNubes.limpiarElementos()
             ritmo.detener()
+            sonidos.detenerTodos()   // corta todos los sonidos en el game over
             game.removeTickEvent("generadorConsumibles")
             game.removeVisual(self)
             game.addVisual(gameOver)

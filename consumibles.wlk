@@ -19,8 +19,6 @@ object estadoConsumibles {
     }
 }
 
-// Wollok guarda cada sonido que se reproduce hasta que se le hace stop(),
-// aunque ya haya terminado de sonar. Si no se frenan, se acumulan y el juego se traba.
 object sonidos {
     const activos = []
 
@@ -34,10 +32,13 @@ object sonidos {
     }
 
     method detener(sonido) {
-        if (sonido.played()) {
-            sonido.stop()
+        // si ya se frenó antes (por ejemplo en el game over), no hace nada
+        if (activos.contains(sonido)) {
+            if (sonido.played()) {
+                sonido.stop()
+            }
+            activos.remove(sonido)
         }
-        activos.remove(sonido)
     }
 
     method detenerTodos() {
