@@ -8,6 +8,6 @@ Valentin Degenaro
 
 Tobias Isidro 
 
-Thiago Shebar
+Tiago Shebar
 
 Matias Schatzyki
